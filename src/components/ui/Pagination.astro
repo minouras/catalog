@@ -1,0 +1,97 @@
+---
+import { number } from 'astro:schema';
+
+interface Props {
+  totalPageNum: number;
+  currentPageNum: number;
+  parentSlug: string;
+}
+
+const { totalPageNum, currentPageNum, parentSlug } = Astro.props;
+const pageUrl = `/${parentSlug}`;
+
+const paginationGenerator = (
+  currentPageNumber: number,
+  totalPageNumber: number,
+  width = 1,
+) => {
+  const prev = currentPageNumber - width;
+  const next = currentPageNumber + width + 1;
+  const ranges = [];
+  const rangeWidthDots: [string?, ...number[]] = [];
+  let length: number;
+  for (let i = 1; i <= totalPageNumber; i += 1) {
+    if (i === 1 || i === totalPageNumber || (i >= prev && i <= next)) {
+      // @ts-ignore
+      ranges.push(i );
+    } else if (i < prev) {
+      i = prev - 1;
+    } else if (i > next) {
+      // @ts-ignore
+      ranges.push(totalPageNumber);
+      break;
+    }
+  }
+  ranges.forEach((range) => {
+    if (length) {
+      if (range - length === 2) {
+        rangeWidthDots.push(length + 1);
+      } else if (range - length !== 1) {
+        rangeWidthDots.push('...');
+      }
+    }
+    rangeWidthDots.push(range);
+    length = range;
+  });
+  return rangeWidthDots;
+};
+---
+
+{
+  totalPageNum > 1 && (
+    <div class="container">
+      <ul class="relative flex w-full justify-center gap-x-2">
+        {paginationGenerator(currentPageNum, totalPageNum).map((page) => {
+          if (page === 1 && !(page === currentPageNum)) {
+            return (
+              <li class="p-news-pager__page-divider">
+                <a href={pageUrl} class="text-lg opacity-50">
+                  {page}
+                </a>
+              </li>
+            );
+          } else if (page === 1 && currentPageNum === 1) {
+            return (
+              <li class="p-news-pager__page-divider is-active">
+                <a href={pageUrl} class="text-lg">
+                  {page}
+                </a>
+              </li>
+            );
+          } else if (page === '...') {
+            return (
+              <li class="p-news-pager__page-divider">
+                <span class="text-lg opacity-50">{page}</span>
+              </li>
+            );
+          } else if (page === currentPageNum) {
+            return (
+              <li class="p-news-pager__page-divider">
+                <a href={pageUrl} class="text-lg">
+                  {page}
+                </a>
+              </li>
+            );
+          }
+          return (
+            <li class="p-news-pager__page-divider">
+              <a href={`${pageUrl}/${page}`} class="text-lg opacity-50">
+                {page}
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  )
+}

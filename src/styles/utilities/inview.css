@@ -1,0 +1,45 @@
+/* ===============================
+- .js-inviewクラスを一緒につける
+==================================*/
+/* =======================
+- Fade up 
+==========================*/
+.u-inview-fadeUp.js-inview {
+  position: relative;
+  top: 2.2rem;
+  opacity: 0;
+  transition:
+    opacity 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0s,
+    top 0.7s cubic-bezier(0.445, 0.05, 0.55, 0.95) 0.1s;
+}
+.u-inview-fadeUp.js-inview.in-view {
+  top: 0;
+  opacity: 1;
+}
+
+/* =======================
+- Blur in
+==========================*/
+.u-inview-blurIn.js-inview {
+  opacity: 0;
+}
+.u-inview-blurIn.js-inview.in-view {
+  animation-duration: 1.5s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  animation-name: blurAnime;
+}
+
+@keyframes blurAnime {
+  from {
+    transform: scale(1.02);
+    opacity: 0;
+    filter: blur(10px);
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+    filter: blur(0);
+  }
+}

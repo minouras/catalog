@@ -1,0 +1,103 @@
+<!doctype html><meta charset="UTF-8" /><meta name="viewport" content="width=device-width" /><title>
+  はじめに &#8211; sdenvテンプレート</title
+><meta name="twitter:card" content="summary_large_image" /><meta
+  name="twitter:site"
+  content="@_yuheiy"
+/><meta name="twitter:title" content="はじめに" /><meta
+  property="og:title"
+  content="はじめに"
+/><meta property="og:type" content="website" /><meta
+  property="og:image"
+  content="https://example.com/assets/img/common/ogp.png"
+/><meta property="og:url" content="https://example.com/about/" /><meta
+  property="og:site_name"
+  content="sdenvテンプレート"
+/><meta property="og:locale" content="ja_JP" /><link
+  rel="apple-touch-icon"
+  href="/apple-touch-icon.png"
+/><link rel="canonical" href="https://example.com/about/" /><link
+  rel="icon"
+  href="/assets/img/common/favicon.svg"
+  type="image/svg+xml"
+/><link rel="stylesheet" href="/_astro/index.28eab17f.css" />
+<script type="module" src="/_astro/hoisted.2615463c.js"></script>
+<body class="min-h-[100svh] bg-white text-zinc-900">
+  <header class="sticky top-0 z-10 bg-zinc-900 text-zinc-100/80" x-data="{ isMenuOpen: false }">
+    <nav class="wrapper flex items-center gap-x-6">
+      <a class="mr-auto py-8 text-xl font-bold transition [&:any-link]:hover:text-zinc-100" href="/"
+        ><img class="block w-40" src="/assets/img/logo/logo-w.svg" alt="Logo" /></a
+      ><button
+        class="py-2 text-sm transition hover:text-zinc-100 min_md:hidden"
+        type="button"
+        @click="isMenuOpen = true"
+      >
+        メニュー</button
+      ><a class="hidden py-2 text-sm transition hover:text-zinc-100 min_md:inline" href="/about/"
+        >はじめに</a
+      ><a class="hidden py-2 text-sm transition hover:text-zinc-100 min_md:inline" href="/news/"
+        >お知らせ</a
+      ><a class="hidden py-2 text-sm transition hover:text-zinc-100 min_md:inline" href="/work/"
+        >実績</a
+      >
+    </nav>
+    <div x-dialog x-model="isMenuOpen" style="display: none">
+      <template x-teleport="#js-overlay-container"
+        ><div class="fixed inset-0 bg-black/80" x-dialog:overlay x-transition.opacity></div
+      ></template>
+      <div
+        class="absolute inset-x-0 top-full border-t border-zinc-800 bg-zinc-900 min_md:hidden"
+        x-dialog:panel
+        x-collapse
+      >
+        <ul class="wrapper divide-y divide-zinc-800">
+          <li class="">
+            <a class="block py-3 text-sm transition hover:text-zinc-100" href="/about/">はじめに</a>
+          </li>
+          <li class="">
+            <a class="block py-3 text-sm transition hover:text-zinc-100" href="/news/">お知らせ</a>
+          </li>
+          <li class="">
+            <a class="block py-3 text-sm transition hover:text-zinc-100" href="/work/">実績</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="relative w-full">
+      <div class="absolute top-0 left-0 w-full h-full flex justify-center items-center">
+        <h1 class="text-white text-3xl font-bold">home key visual</h1>
+      </div>
+      <div class="block w-full h-auto">
+        <img class="w-full" src="/assets/img/other/dummy.jpg" alt="" />
+      </div>
+    </div>
+    <section class="section">
+      <div class="wrapper">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iure adipisci sint, vel
+          nesciunt iste saepe non veniam nostrum consectetur quisquam voluptatibus nemo, error
+          voluptates illo dolorem accusantium ut voluptate.
+        </p>
+      </div>
+    </section>
+  </main>
+  <footer class="sticky top-full mt-12 bg-zinc-900 py-2 text-zinc-100/80">
+    <nav class="wrapper">
+      <p class="flex flex-wrap justify-center gap-x-6">
+        <a class="py-2 text-sm transition hover:text-zinc-100" href="/">ホーム</a
+        ><a class="py-2 text-sm transition hover:text-zinc-100" href="/about/">はじめに</a
+        ><a class="py-2 text-sm transition hover:text-zinc-100" href="/news/">お知らせ</a
+        ><a class="py-2 text-sm transition hover:text-zinc-100" href="/work/">実績</a>
+      </p>
+    </nav>
+  </footer>
+  <div
+    class="z-50 fixed top-0 left-0 flex items-center justify-center w-full h-full overflow-hidden text-center visible opacity-100 max-w-[100vw] bg-white transition-transform duration-500 ease-out delay-300"
+    id="js-loading"
+  >
+    <p class="z-20 w-24 min_md:w-48"><img src="./assets/img/logo/logo-w.svg" alt="logo" /></p>
+    <div class="absolute top-0 left-0 z-10 block w-0 h-full bg-slate-700" id="js-progress"></div>
+  </div>
+  <div id="js-overlay-container"></div>
+</body>

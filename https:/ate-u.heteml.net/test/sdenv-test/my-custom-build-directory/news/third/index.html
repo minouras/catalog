@@ -1,0 +1,118 @@
+<!doctype html><meta charset="UTF-8" /><meta name="viewport" content="width=device-width" /><title>
+  お知らせ（2） &#8211; sdenvテンプレート</title
+><meta name="description" content="Lorem ipsum dolor sit amet consectetur adipisicing elit." /><meta
+  name="twitter:card"
+  content="summary_large_image"
+/><meta name="twitter:site" content="@_yuheiy" /><meta
+  name="twitter:title"
+  content="お知らせ（2）"
+/><meta property="og:title" content="お知らせ（2）" /><meta
+  property="og:type"
+  content="website"
+/><meta property="og:image" content="https://example.com/assets/img/common/ogp.png" /><meta
+  property="og:url"
+  content="https://example.com/news/third/"
+/><meta
+  property="og:description"
+  content="Lorem ipsum dolor sit amet consectetur adipisicing elit."
+/><meta property="og:site_name" content="sdenvテンプレート" /><meta
+  property="og:locale"
+  content="ja_JP"
+/><link rel="apple-touch-icon" href="/apple-touch-icon.png" /><link
+  rel="canonical"
+  href="https://example.com/news/third/"
+/><link rel="icon" href="/assets/img/common/favicon.svg" type="image/svg+xml" /><link
+  rel="stylesheet"
+  href="/_astro/index.28eab17f.css"
+/>
+<script type="module" src="/_astro/hoisted.2615463c.js"></script>
+<body class="min-h-[100svh] bg-white text-zinc-900">
+  <header class="sticky top-0 z-10 bg-zinc-900 text-zinc-100/80" x-data="{ isMenuOpen: false }">
+    <nav class="wrapper flex items-center gap-x-6">
+      <a class="mr-auto py-8 text-xl font-bold transition [&:any-link]:hover:text-zinc-100" href="/"
+        ><img class="block w-40" src="/assets/img/logo/logo-w.svg" alt="Logo" /></a
+      ><button
+        class="py-2 text-sm transition hover:text-zinc-100 min_md:hidden"
+        type="button"
+        @click="isMenuOpen = true"
+      >
+        メニュー</button
+      ><a class="hidden py-2 text-sm transition hover:text-zinc-100 min_md:inline" href="/about/"
+        >はじめに</a
+      ><a class="hidden py-2 text-sm transition hover:text-zinc-100 min_md:inline" href="/news/"
+        >お知らせ</a
+      ><a class="hidden py-2 text-sm transition hover:text-zinc-100 min_md:inline" href="/work/"
+        >実績</a
+      >
+    </nav>
+    <div x-dialog x-model="isMenuOpen" style="display: none">
+      <template x-teleport="#js-overlay-container"
+        ><div class="fixed inset-0 bg-black/80" x-dialog:overlay x-transition.opacity></div
+      ></template>
+      <div
+        class="absolute inset-x-0 top-full border-t border-zinc-800 bg-zinc-900 min_md:hidden"
+        x-dialog:panel
+        x-collapse
+      >
+        <ul class="wrapper divide-y divide-zinc-800">
+          <li class="">
+            <a class="block py-3 text-sm transition hover:text-zinc-100" href="/about/">はじめに</a>
+          </li>
+          <li class="">
+            <a class="block py-3 text-sm transition hover:text-zinc-100" href="/news/">お知らせ</a>
+          </li>
+          <li class="">
+            <a class="block py-3 text-sm transition hover:text-zinc-100" href="/work/">実績</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+  <main>
+    <article>
+      <header class="mb-12 border-b border-zinc-200 py-12">
+        <div class="wrapper">
+          <p class="text-sm text-zinc-500">
+            <time datetime="2023-08-03T00:00:00.000Z">2023年8月3日</time>
+          </p>
+          <h1 class="mt-3 text-xl font-bold kerning-all">お知らせ（2）</h1>
+        </div>
+      </header>
+      <div class="prose wrapper">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, exercitationem aperiam
+          minus eos sed ratione? Iste porro est ut esse laudantium molestiae culpa, odio numquam,
+          nam magni, dicta similique suscipit!
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla fugit aliquam officia
+          aperiam animi, nesciunt quo repudiandae tempore iste? Consectetur sequi corrupti doloribus
+          voluptatum velit cupiditate quidem ratione ex sint!
+        </p>
+        <p>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste nulla unde natus qui
+          reiciendis, autem in odit magnam rerum dolor veniam repellendus doloremque. Sunt quae
+          dicta placeat temporibus, neque quisquam.
+        </p>
+      </div>
+    </article>
+  </main>
+  <footer class="sticky top-full mt-12 bg-zinc-900 py-2 text-zinc-100/80">
+    <nav class="wrapper">
+      <p class="flex flex-wrap justify-center gap-x-6">
+        <a class="py-2 text-sm transition hover:text-zinc-100" href="/">ホーム</a
+        ><a class="py-2 text-sm transition hover:text-zinc-100" href="/about/">はじめに</a
+        ><a class="py-2 text-sm transition hover:text-zinc-100" href="/news/">お知らせ</a
+        ><a class="py-2 text-sm transition hover:text-zinc-100" href="/work/">実績</a>
+      </p>
+    </nav>
+  </footer>
+  <div
+    class="z-50 fixed top-0 left-0 flex items-center justify-center w-full h-full overflow-hidden text-center visible opacity-100 max-w-[100vw] bg-white transition-transform duration-500 ease-out delay-300"
+    id="js-loading"
+  >
+    <p class="z-20 w-24 min_md:w-48"><img src="./assets/img/logo/logo-w.svg" alt="logo" /></p>
+    <div class="absolute top-0 left-0 z-10 block w-0 h-full bg-slate-700" id="js-progress"></div>
+  </div>
+  <div id="js-overlay-container"></div>
+</body>

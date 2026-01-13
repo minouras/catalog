@@ -1,0 +1,26 @@
+/* =======================
+- ストライプ
+==========================*/
+.u-bg-stripe--yellow {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.4) 10px,
+    rgba(255, 255, 255, 0.4) 20px
+  );
+  background-size: auto auto;
+  background-color: rgba(243, 249, 210, 1);
+}
+
+.u-bg-stripe--green {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.4) 10px,
+    rgba(255, 255, 255, 0.4) 20px
+  );
+  background-size: auto auto;
+  background-color: rgba(189, 231, 179, 1);
+}

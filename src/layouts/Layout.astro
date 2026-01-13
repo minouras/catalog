@@ -1,0 +1,67 @@
+---
+import Footer from '@/components/base/Footer.astro';
+import Header from '@/components/base/Header.astro';
+import Meta from '@/components/base/Meta.astro';
+import Loading from '@/components/ui/Loading.astro';
+import { SITE_TITLE, SITE_DESC } from '@/consts.ts';
+import '@/styles/style.css';
+
+/* ===========================================================
+タイトル、サイト説明、キーワードのデフォルトは @/const.ts で設定
+各ページで上書きしたい場合は、以下のプロパティで指定すること
+=========================================================== */
+interface Props {
+  title: string;
+  tagline?: string;
+  description?: string;
+  keywords?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  is404?: boolean;
+}
+
+const { title, tagline, description, keywords, ogType = 'website', is404 = false } = Astro.props;
+
+const canonicalURL = !is404 && new URL(Astro.url.pathname, Astro.site);
+---
+
+<html class="" lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title set:html={[title, SITE_TITLE, tagline].filter(Boolean).join(' &#8211; ')} />
+    <meta name="description" content={description ?? SITE_DESC} />
+
+    <script src="@/scripts/main.ts"></script>
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="" />
+    <meta name="twitter:title" content={title ?? SITE_TITLE} />
+
+    <meta property="og:title" content={title ?? tagline} />
+    <meta property="og:type" content={ogType} />
+    {canonicalURL && <meta property="og:url" content={canonicalURL} />}
+    {description && <meta property="og:description" content={description ?? SITE_DESC} />}
+    <meta property="og:site_name" content={SITE_TITLE} />
+    <meta property="og:locale" content="ja_JP" />
+
+    {canonicalURL && <link rel="canonical" href={canonicalURL} />}
+    <!-- TODO:本番設置場所が分かり次第入力 -->
+    <Meta />
+  </head>
+
+  <body class="min-h-[100svh] bg-white">
+    <div class="b-body">
+      <Header />
+
+      <slot />
+
+      <Footer />
+    </div>
+    <Loading />
+
+    {/* https://atfzl.com/don-t-attach-tooltips-to-document-body */}
+    <div id="js-overlay-container"></div>
+  </body>
+</html>

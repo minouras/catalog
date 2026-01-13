@@ -1,0 +1,23 @@
+/*
+ * Handle font kerning.
+ * 参考: https://github.com/w3c/csswg-drafts/issues/6723#issuecomment-1411487571
+ *
+ * カーニング情報がないとfont-kerningは効果がない。
+ * OpenType機能がないとfont-feature-settingsは効果がない。
+ * Google fontの和文フォントには殆ど効果がないので注意。
+ */
+
+.u-kerning-none {
+  font-kerning: none;
+  font-feature-settings: normal;
+}
+
+.u-kerning-normal {
+  font-kerning: normal;
+  font-feature-settings: normal;
+}
+
+.u-kerning-all {
+  font-kerning: normal;
+  font-feature-settings: 'palt';
+}

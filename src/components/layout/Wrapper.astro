@@ -1,0 +1,29 @@
+---
+interface Props {
+  width?: 'full' | 'narrow' | 'full-sp' | 'leftFull';
+  css?: string;
+  id?: string;
+}
+
+const { width, css, id } = Astro.props;
+
+// 通常(フレキシブル)
+let width_css = 'px-[4vw] min_md:px-[6vw] min_xl:px-[8.8vw] ';
+if (width === 'full') {
+  // 両側余白無し
+  width_css = 'px-0';
+} else if (width === 'narrow') {
+  // 余白大きめ&マックス有
+  width_css = 'px-10 min_md:px-20 max-w-[900px]';
+} else if (width === 'full-sp') {
+  // 携帯のみ余白無し
+  width_css = 'px-0 min_md:px-[6vw] min_xl:px-[8.8vw]';
+} else if (width === 'leftFull') {
+  // 左側のみ余白無し
+  width_css = 'pl-[4vw] min_md:pl-[6vw] min_xl:pl-[8.8vw] pr-0';
+}
+---
+
+<div class={`relative mx-auto ${width_css} ${css ?? ''}`} id={id}>
+  <slot />
+</div>

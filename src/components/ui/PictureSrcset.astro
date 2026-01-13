@@ -1,0 +1,55 @@
+---
+import type { ImageMetadata } from 'astro';
+import { getImage } from 'astro:assets';
+
+interface Props {
+	srcsetPaths: [string, string, string?, string?];
+  mediaQuery?: number;
+  classNames?: string;
+  alt?: string;
+  loading?: 'lazy' | 'eager';
+  format?: 'webp' | 'avif';
+}
+
+const { srcsetPaths, mediaQuery = 768, classNames, alt = '', loading = 'lazy', format = 'webp' } = Astro.props;
+
+const importImage = async (src: string) => {
+  const imageFile = import.meta.glob<{ default: ImageMetadata }>('/src/images/**/*');
+
+  if (!imageFile[`/src/images/${src}`]) return;
+  const moduleImage = await imageFile[`/src/images/${src}`]();
+
+  const { default: imageSrc } = moduleImage;
+  const image = await getImage({ src: imageSrc, format: format });
+  const { loading: imgLoading, ...attributes } = image.attributes;
+  return { src: image.src, imgLoading, attributes }; // imgLoadingを返すように変更
+};
+
+const importImages = async () => {
+  return Promise.all(
+    srcsetPaths.map(async (src) => {
+      if (!src) return;
+      return importImage(src);
+    }),
+  );
+};
+
+const images = await importImages();
+// https://zenn.dev/morimichi/articles/4a272094bc124e
+// ビルド時に全ての画像をimportしwebp変換するのでビルド時間が増える。SSRやSSGでは非推奨
+// srcsetPathsの指定順は[1倍画像、2倍画像] or [携帯1倍、携帯2倍、PC1倍、PC2倍]
+---
+{
+  (
+    <>
+      {images.length === 2 ? (
+        <img srcset={`${images[0]?.src} 1x, ${images[1]?.src} 2x`} loading={loading} alt={alt} class:list={[classNames]} />
+      ) : (
+        <picture class:list={[classNames]}>
+          <source media={`(min-width: ${mediaQuery}px)`} srcset={`${images[2]?.src} 1x, ${images[3]?.src} 2x`} {...images[2]?.attributes}/>
+          <img srcset={`${images[0]?.src} 1x, ${images[1]?.src} 2x`} {...images[1]} loading={loading} alt={alt} /> {/* imgLoadingではなく、attributesを使用 */}
+        </picture>
+      )}
+    </>
+  )
+}

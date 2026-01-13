@@ -1,0 +1,82 @@
+@import 'tailwindcss';
+@layer base, components, utilities;
+
+/* ===================================================
+  Tailwind CSS Variables
+	------------------------------------------------------
+	Tailwindで使える変数です。
+	theme()関数で読み取れます。
+=================================================== */
+@theme {
+  /* --------------------------------
+	ブレークポイント
+	sm:, md: などの responsive variant
+	-------------------------------- */
+  --breakpoint-sm: 40rem; /* 640px */
+  --breakpoint-md: 48rem; /* 768px */
+  --breakpoint-lg: 64rem; /* 1024px */
+  --breakpoint-xl: 80rem; /* 1280px */
+  --breakpoint-2xl: 96rem; /* 1536px */
+
+  /* --------------------------------
+	フォントサイズ
+	text-〇〇 で使用
+	--------------------------------*/
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.125rem; /* 18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem; /* 36px */
+  --text-5xl: 3rem; /* 48px */
+  --text-6xl: 3.75rem; /* 60px */
+  --text-7xl: 4.5rem; /* 72px */
+  --text-8xl: 6rem; /* 96px */
+  --text-9xl: 8rem; /* 128px */
+
+  /* ------------------------------------
+    Colors
+  ------------------------------------ */
+  --color-dark: #333333;
+  --color-gray: #808080;
+}
+
+/* ===================================================
+  CSS Variables
+	------------------------------------------------------
+	css変数です。
+	テーマカラーやデザインに関する独自変数を定義します。
+=================================================== */
+:root {
+  /* --color-primary: #1e40af;
+	--color-secondary: #f59e0b;
+	--color-background: #ffffff;
+	--color-text: #111827; */
+}
+
+/* ===================================================
+  imports
+	------------------------------------------------------
+	モジュールcssファイルをインポートしています。
+	base => components => utilities の順で読み込まれます。
+=================================================== */
+/* ------------------------------------
+  Base 
+------------------------------------ */
+@import './base/base.css' layer(base);
+@import './base/font.css' layer(base);
+
+/* ------------------------------------
+  Components
+------------------------------------ */
+@import './components/prose.css' layer(components);
+
+/* ------------------------------------
+  Utilities
+------------------------------------ */
+@import './utilities/animation.css' layer(utilities);
+@import './utilities/bg.css' layer(utilities);
+@import './utilities/inview.css' layer(utilities);
+@import './utilities/kerning.css' layer(utilities);

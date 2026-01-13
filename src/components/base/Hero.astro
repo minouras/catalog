@@ -1,0 +1,29 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types';
+
+type Props<Tag extends HTMLTag = 'h1'> = Polymorphic<{
+  as: Tag;
+  title: string;
+}>;
+
+const { as: Tag = 'h1', title } = Astro.props;
+const baseDir = import.meta.env.BASE_URL;
+/*
+ * ファーストビューで見せたい画像にはjs-preloadクラスを付与しておく
+ * 動画を含む場合はloading.tsのカスタマイズが必要
+ */
+---
+
+<div class=`relative h-[60rem] w-full bg-blue-900`>
+  <div class="absolute left-0 top-0 flex h-full w-full items-center justify-center">
+    <Tag class="text-3xl font-bold text-white">{title}</Tag>
+  </div>
+  <div class="block h-full w-full [&_img]:block [&_img]:h-full [&_img]:w-full [&_img]:object-cover">
+    <!-- <Image src={topKv} alt="" class="object-cover w-full h-full" /> -->
+    <img
+      class="w-full h-full object-cover js-preload"
+      src=`${baseDir}/assets/img/other/dummy.jpg`
+      alt=""
+    />
+  </div>
+</div>

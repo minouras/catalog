@@ -1,0 +1,30 @@
+---
+interface Props {
+  top?: '0' | 'l' | 'xl';
+  bottom?: '0' | 'l';
+  css?: string;
+  id?: string;
+}
+
+const { top, bottom, css, id } = Astro.props;
+
+let top_css = 'pt-16 min_md:pt-28';
+if (top === '0') {
+  top_css = 'pt-0';
+} else if (top === 'l') {
+  top_css = 'pt-28 min_md:pt-[15.6rem]';
+} else if (top === 'xl') {
+  top_css = 'pt-36 min_md:pt-[16.5rem]';
+}
+
+let bottom_css = 'pb-16 min_md:pb-28';
+if (bottom === '0') {
+  bottom_css = 'pb-0';
+} else if (bottom === 'l') {
+  bottom_css = 'pb-28 min_md:pb-[15.6rem]';
+}
+---
+
+<section class={`relative ${top_css} ${bottom_css} ${css ?? ''}`} id={id}>
+  <slot />
+</section>

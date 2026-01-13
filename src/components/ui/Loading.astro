@@ -1,0 +1,23 @@
+---
+const baseDir = import.meta.env.BASE_URL;
+/*
+ * ファーストビューで見せたい画像にはjs-preloadクラスを付与しておく
+ */
+---
+
+<div
+  class="visible fixed left-0 top-0 z-50 flex h-full w-full max-w-[100vw] items-center justify-center
+				overflow-hidden bg-white text-center opacity-100 transition-transform delay-300 duration-500 ease-out"
+  id="js-loading"
+>
+  <p class="z-20 w-24 min_md:w-48">
+    <img class="js-preload" src=`${baseDir}assets/img/logo/logo-w.svg` alt="logo" />
+  </p>
+  <div class="absolute left-0 top-0 z-10 block h-full w-0 bg-slate-700" id="js-progress"></div>
+</div>
+
+<style>
+  :global(#js-loading.is-loaded) {
+    @apply origin-right scale-x-0;
+  }
+</style>

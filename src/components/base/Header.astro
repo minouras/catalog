@@ -1,0 +1,66 @@
+---
+import { SITE_NAV } from '@/consts';
+import HamburgerBtn from './HamburgerBtn.astro';
+import HamburgerNav from './HamburgerNav.astro';
+const baseDir = import.meta.env.BASE_URL;
+/*
+ * ファーストビューで見せたい画像にはjs-preloadクラスを付与しておく
+ */
+---
+
+<header class="header z-10 bg-zinc-900 text-zinc-100/80" id="js-header">
+  <nav class="flex items-center gap-x-6">
+    <a
+      class="mr-auto py-8 text-xl font-bold transition [&:any-link]:hover:text-zinc-100"
+      href=`${baseDir}`
+    >
+      <img class="block w-40 js-preload" src=`${baseDir}assets/img/logo/logo-w.svg` alt="Logo" />
+    </a>
+    <HamburgerBtn />
+    {
+      SITE_NAV.map((nav) => (
+        <a class="hidden py-2 text-sm transition hover:text-zinc-100 min_md:inline" href={nav.href}>
+          {nav.name}
+        </a>
+      ))
+    }
+  </nav>
+  <HamburgerNav>
+    <ul class="c-wrapper divide-y divide-zinc-800">
+      {
+        SITE_NAV.map((nav) => (
+          <li class="js-gnav__item">
+            <a class="block py-3 text-sm transition hover:text-zinc-100" href={nav.href}>
+              {nav.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </HamburgerNav>
+</header>
+
+<style>
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 4vw;
+    width: 100%;
+  }
+  .header.is-fixed {
+    position: fixed;
+    transform: translate(0, -105%);
+  }
+  :global(html.header-is-fixed) .header.is-fixed {
+    transition: all 0.8s ease;
+  }
+  :global(html.site-scroll-up) .header.is-fixed {
+    transform: translate(0, 0);
+    transition: 0.48s ease-in-out;
+  }
+  :global(html.gnav-is-active) .header.is-fixed {
+    transform: translate(0, 0);
+    transition: 0.48s ease-in-out;
+  }
+</style>
