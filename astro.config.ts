@@ -10,7 +10,7 @@ import { visualizer } from 'rollup-plugin-visualizer';
 export default defineConfig({
   // *** テストサーバー用 ************
   site: 'https://minouras.github.io/catalog',
-  base: '/catalog-page/',
+  base: '/catalog/',
   // ***********************
   integrations: [
     mdx(),
