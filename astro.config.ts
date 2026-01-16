@@ -9,12 +9,8 @@ import { visualizer } from 'rollup-plugin-visualizer';
 // https://astro.build/config
 export default defineConfig({
   // *** テストサーバー用 ************
-  site: 'https://ate-u.heteml.net',
-  base: '/test/newt_astro/',
-  // ***********************
-  // *** 本番用 ************
-  // site: 'https://example-domain.com',
-  // base: '/',
+  site: 'https://minouras.github.io/catalog',
+  base: '/catalog-page/',
   // ***********************
   integrations: [
     mdx(),
