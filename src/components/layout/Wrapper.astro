@@ -1,6 +1,6 @@
 ---
 interface Props {
-  width?: 'full' | 'narrow' | 'full-sp' | 'leftFull';
+  width?: string | 'full' | 'full-sp';
   css?: string;
   id?: string;
 }
@@ -8,19 +8,16 @@ interface Props {
 const { width, css, id } = Astro.props;
 
 // 通常(フレキシブル)
-let width_css = 'px-[4vw] min_md:px-[6vw] min_xl:px-[8.8vw] ';
+let width_css = 'px-[4.8vw] md:px-[6vw] xl:px-[12vw]';
 if (width === 'full') {
-  // 両側余白無し
+  // 余白無し
   width_css = 'px-0';
-} else if (width === 'narrow') {
-  // 余白大きめ&マックス有
-  width_css = 'px-10 min_md:px-20 max-w-[900px]';
 } else if (width === 'full-sp') {
-  // 携帯のみ余白無し
-  width_css = 'px-0 min_md:px-[6vw] min_xl:px-[8.8vw]';
-} else if (width === 'leftFull') {
-  // 左側のみ余白無し
-  width_css = 'pl-[4vw] min_md:pl-[6vw] min_xl:pl-[8.8vw] pr-0';
+  //携帯のみ余白無し
+  width_css = 'px-0 md:px-[6vw] xl:px-[12vw]';
+} else if (width) {
+  //カスタム
+  width_css = width;
 }
 ---
 

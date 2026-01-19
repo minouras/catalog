@@ -7,22 +7,25 @@ export const SITE_DESC =
   'サイトの共通ディスクリプションを記述してください。ページ別に異なるディスクリプションを設定する場合は、ページファイルのLayoutタグで上書きしてください';
 
 /*ナビゲーション*/
-const baseDir = import.meta.env.BASE_URL;
 export const SITE_NAV = [
   {
-    name: 'TOP',
-    href: `${baseDir}`,
+    name: 'テキスト',
+    href: 'text',
   },
   {
-    name: 'ABOUT',
-    href: '#about',
+    name: 'ボタン',
+    href: 'button',
   },
   {
-    name: 'NEWS',
-    href: 'news',
+    name: '背景表現',
+    href: 'background',
   },
   {
-    name: 'INFO',
-    href: '#info',
+    name: 'スライド',
+    href: '#slide',
+  },
+  {
+    name: 'svgアニメ',
+    href: 'svg',
   },
 ];
