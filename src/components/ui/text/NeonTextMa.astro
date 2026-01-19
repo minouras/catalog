@@ -1,0 +1,48 @@
+---
+/**
+ * UI：テキスト
+ * NeonTextの色指定を1色ではなく3色手動選定する
+ * より細やかな表現をしたい時
+ * */
+import type { HTMLTag, Polymorphic } from 'astro/types';
+
+type Props<Tag extends HTMLTag = 'h1'> = Polymorphic<{
+  as: Tag;
+  color1: string;
+  color2: string;
+  color3: string;
+  color4: string;
+  txtColor?: string;
+}>;
+
+const { as: Tag = 'h1', color1, color2, color3, color4, txtColor = '#fff' } = Astro.props;
+---
+
+<Tag
+  class="neon-text"
+  style={`--neon-color1: ${color1}; --neon-color2: ${color2}; --neon-color3: ${color3}; --neon-color4: ${color4};--neon-text-color: ${txtColor};`}
+>
+  <slot />
+</Tag>
+
+<style>
+  .neon-text {
+    /* 文字色 */
+    --tc: var(--neon-text-color);
+    color: var(--tc);
+
+    /* 基本色 */
+    --c1: var(--neon-color1);
+    --c2: var(--neon-color2);
+    --c3: var(--neon-color3);
+    --c4: var(--neon-color4);
+
+    text-shadow:
+      0 0 1px var(--tc),
+      0 0 6px var(--c1),
+      0 0 10px var(--c2),
+      0 0 16px var(--c3),
+      0 0 32px var(--c4),
+      0 8px 3px rgba(0, 0, 0, 0.4);
+  }
+</style>

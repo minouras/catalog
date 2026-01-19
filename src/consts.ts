@@ -17,6 +17,10 @@ export const PAGE_INDEX = [
     href: 'button',
   },
   {
+    name: 'コンテンツ',
+    href: 'contents',
+  },
+  {
     name: '背景表現',
     href: 'background',
     content: [
@@ -27,6 +31,10 @@ export const PAGE_INDEX = [
       {
         id: 'rising-anime',
         labels: ['上昇アニメ', 'svgアニメ', '縦に無限ループ'],
+      },
+      {
+        id: 'particle',
+        labels: ['パーティクル', 'tsParticle', 'マウスオーバーアニメ'],
       },
       {
         id: 'triangle-dot',

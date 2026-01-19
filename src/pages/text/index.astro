@@ -1,0 +1,70 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Section from '@/components/layout/Section.astro';
+import Wrapper from '@/components/layout/Wrapper.astro';
+import HeroAtInner from '@/components/base/HeroAtInner.astro';
+import Sentence from '@/components/ui/Sentence.astro';
+import NeonText from '@/components/ui/text/NeonText.astro';
+import NeonTextMa from '@/components/ui/text/NeonTextMa.astro';
+// UI
+
+/**
+ * テキスト表現
+ * */
+---
+
+<Layout title="コンテンツ カード・ブロック">
+  {
+    /*-----------------------------
+	# ヒーロー
+	-----------------------------*/
+  }
+  <HeroAtInner>
+    <span slot="title">テキスト</span>
+    <span slot="desc">テキストの様々な表現。<br />svgや画像によるテキストは除きます。</span>
+  </HeroAtInner>
+
+  {
+    /*-----------------------------
+	# ネオン系
+	-----------------------------*/
+  }
+  <Section id="neon" css="bg-black">
+    <Wrapper>
+      <NeonText as="h1">
+        <span class="text-2xl tracking-wider md:text-3xl">ネオン看板風テキスト</span>
+      </NeonText>
+      <div class="mt-6">
+        <Sentence as="div">
+          <NeonText as="p" color="var(--color-primary)">
+            text-shadowを使ったネオン看板風テキストです。基準色を一色プロパティとして渡します。
+          </NeonText>
+          <NeonText as="p" color="#fff848" txtColor="#000000">
+            <span class="font-bold"
+              >文字色を背景と同色にすると、縁取りっぽいデザインになります。</span
+            >
+          </NeonText>
+        </Sentence>
+        <div class="mt-6">
+          <NeonText as="p" color="#00b4ea" txtColor="#00b4ea">
+            <span class="b-font-roboto text-3xl font-bold tracking-wider"
+              >Maby, More Beautiful in English</span
+            >
+          </NeonText>
+        </div>
+        <div class="mt-6 text-xl">
+          <NeonTextMa
+            as="p"
+            color1="goldenrod"
+            color2="orangered"
+            color3="mediumblue"
+            color4="purple"
+            txtColor="yellow"
+          >
+            shadowの色を手動で複数指定するVerもあり。&nbsp;細やかな表現向け
+          </NeonTextMa>
+        </div>
+      </div>
+    </Wrapper>
+  </Section>
+</Layout>

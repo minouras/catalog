@@ -8,6 +8,7 @@ import Sentence from '@/components/ui/Sentence.astro';
 import GradientAnime from '@/components/ui/background/GradientAnime.astro';
 import RisingAnime from '@/components/ui/background/RisingAnime.astro';
 import TriangleDot from '@/components/ui/background/TriangleDot.astro';
+import ParticleAnime from '@/components/ui/background/ParticleAnime.astro';
 
 /**
  * 背景の表現
@@ -74,6 +75,22 @@ import TriangleDot from '@/components/ui/background/TriangleDot.astro';
       </Wrapper>
     </Section>
   </RisingAnime>
+
+  {
+    /*-----------------------------
+	# tsParticle によるアニメーション背景
+	-----------------------------*/
+  }
+  <ParticleAnime id="particle">
+    <Section css="h-screen w-full">
+      <div class="relative flex h-full w-full items-center justify-center">
+        <p class="w-fit bg-orange-300 p-2 text-center text-2xl md:text-4xl">
+          <a class="text-(--color-link) underline" href="https://particles.js.org/">tsParticle</a
+          >を使った<br class="md:hidden" />アニメーション背景
+        </p>
+      </div>
+    </Section>
+  </ParticleAnime>
 
   {
     /*-----------------------------

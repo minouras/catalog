@@ -4,8 +4,7 @@ import { Loading } from './components/loading';
 import { SetGnav } from './components/setGnav';
 import { SmoothScroll } from './components/SmoothScroll';
 // 任意のモジュール
-import { letterAnimation } from './components/letterAnimation';
-
+import { initParticles } from './components/particle';
 
 // loading.ts
 document.addEventListener('DOMContentLoaded', () => {
@@ -15,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // ※注意事項を読むこと
   SmoothScroll.init();
   inviewScroll();
-});
 
-letterAnimation('.u-animation-jsLetter');
+  /**
+   * パーティクルが浮遊する背景
+   * */
+  initParticles();
+});
