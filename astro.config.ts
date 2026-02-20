@@ -3,6 +3,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'astro/config';
 import { visualizer } from 'rollup-plugin-visualizer';
+import react from '@astrojs/react';
 // 相対パスで出したい場合、↓をインストールして使用
 // import relativeLinks from 'astro-relative-links';
 
@@ -12,11 +13,8 @@ export default defineConfig({
   site: 'https://minouras.github.io/catalog',
   base: '/catalog/',
   // ***********************
-  integrations: [
-    mdx(),
-    sitemap(),
-    // relativeLinks(),  ※相対パスにしたい時
-  ],
+  integrations: [mdx(), // relativeLinks(),  ※相対パスにしたい時
+  sitemap(), react()],
   vite: {
     define: {
       'import.meta.vitest': 'undefined',

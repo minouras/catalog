@@ -3,6 +3,7 @@ import Hero from '@/components/base/Hero.astro';
 import Section from '@/components/layout/Section.astro';
 import Wrapper from '@/components/layout/Wrapper.astro';
 import PageIndex from '@/components/project/PageIndex.astro';
+import Keywords from '@/components/project/Keywords';
 import Layout from '@/layouts/Layout.astro';
 ---
 
@@ -19,6 +20,7 @@ import Layout from '@/layouts/Layout.astro';
     <Section>
       <Wrapper>
         <h2 class="text-secondary text-4xl font-bold">KEYWORDS</h2>
+        <Keywords client:load />
       </Wrapper>
     </Section>
   </main>
